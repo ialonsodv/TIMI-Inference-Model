@@ -66,24 +66,11 @@ col_head1, col_head2 = st.columns([3, 1])
 with col_head1:
     st.title("TIMI")
 with col_head2:
-    # 1. Intentamos buscar el archivo de varias formas
-    nombres_posibles = ['logo_timi.png', 'logo_timi.PNG', 'LOGO_TIMI.png']
-    logo_encontrado = False
-
-    for nombre in nombres_posibles:
-        # Buscamos en la misma carpeta donde está este script
-        ruta_intento = os.path.join(os.path.dirname(__file__), nombre)
-        if os.path.exists(ruta_intento):
-            st.image(ruta_intento, use_container_width=True)
-            logo_encontrado = True
-            break
-    
-    # 2. Si sigue sin salir, intentamos la carga directa (Streamlit Working Dir)
-    if not logo_encontrado:
-        try:
-            st.image('logo_timi.png', use_container_width=True)
-        except:
-            st.caption("⚠️ Error de ruta")
+    ruta_logo = os.path.join(ruta_base, 'logo_timi.png')
+    if os.path.exists(ruta_logo):
+        st.image(ruta_logo, use_container_width=True)
+    else:
+        st.write("")
 
 if df_ref is not None:
     lista_prov = sorted(df_ref['PROV'].unique().tolist(), key=normalizar)
