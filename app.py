@@ -35,7 +35,11 @@ NOMBRES_TRIBUS = {
 }
 
 # 2. CONFIGURACIÓN UI
-st.set_page_config(page_title="TIMI", layout="centered")
+st.set_page_config(
+    page_title="TIMI", 
+    page_icon="logo_timi.png", 
+    layout="centered"
+)
 
 st.markdown("""
     <style>
@@ -61,7 +65,7 @@ def load_assets():
 
 rf, scaler, df_ref = load_assets()
 
-# 3. INTERFAZ PRINCIPAL (CABECERA CON LOGO)
+# 3. INTERFAZ PRINCIPAL
 col_head1, col_head2 = st.columns([3, 1])
 with col_head1:
     st.title("TIMI")
