@@ -108,7 +108,7 @@ if df_ref is not None:
 
     st.markdown("---")
     st.subheader("⚙️ Simulación de Escenarios")
-    st.caption("Ajusta la variación sobre los datos reales actuales.")
+    st.caption("Ajusta la variación porcentual sobre los datos reales actuales.")
 
     def crear_input_simulacion(label, val_base, key_suffix, unidad="%"):
         col1, col2 = st.columns([2, 1])
@@ -120,12 +120,12 @@ if df_ref is not None:
             st.caption(f"Base: {val_base:.2f}{unidad}")
         return val_final
 
-    v1 = crear_input_simulacion("Crecimiento Población", r['VAR_ANUAL_POB'], "pob")
-    v2 = crear_input_simulacion("Población Senior (>60)", r['PORC_60_MAS'], "sen")
-    v3 = crear_input_simulacion("Población Demanda (25-49)", r['PORC_EDAD_DEMANDA'], "dem")
+    v1 = crear_input_simulacion("Crecimiento General de la Población", r['VAR_ANUAL_POB'], "pob")
+    v2 = crear_input_simulacion("Población Senior (>60 años)", r['PORC_60_MAS'], "sen")
+    v3 = crear_input_simulacion("Población en Edad de Demanda (25-49 años)", r['PORC_EDAD_DEMANDA'], "dem")
     v4 = crear_input_simulacion("Extranjeros Europeos", r['PORC_EUROPEOS_NO_ESP'], "eur")
     v5 = crear_input_simulacion("Resto de Extranjeros", r['PORC_RESTO_EXTRANJEROS'], "ext")
-    v6 = crear_input_simulacion("Densidad de Vivienda", r['INTENSIDAD_VIV'], "den", unidad="")
+    v6 = crear_input_simulacion("Densidad de Vivienda (nº de compraventas por cada 1.000 hab.)", r['INTENSIDAD_VIV'], "den", unidad="")
 
     st.markdown("<br>", unsafe_allow_html=True)
     if st.button("CALCULAR IMPACTO EN PRECIO", type="primary", use_container_width=True):
